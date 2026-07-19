@@ -5,10 +5,27 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
+
+
 const schema = yup.object({
-  email: yup.string().email('Enter a valid email').required('Email is required'),
+  email: yup
+    .string()
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@(gmail\.com|email\.com)$/,
+      'Only @gmail.com or @email.com email addresses are allowed',
+    )
+    .required('Email is required'),
   password: yup.string().min(6, 'At least 6 characters').required('Password is required'),
 });
+
+
+// const schema = yup.object({
+//   email: yup.string().email('Enter a valid email').required('Email is required'),
+//   password: yup.string().min(6, 'At least 6 characters').required('Password is required'),
+// });
+
+
+
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
