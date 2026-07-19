@@ -302,7 +302,9 @@ export default function TaskModal({ isOpen, onClose, onSubmit, initialData }) {
                   className="input-field"
                 >
                   <option value="">Year</option>
-                  {Array.from({ length: 6 }, (_, i) => String(new Date().getFullYear() + i)).map(
+                 
+                 {Array.from({ length: 21 }, (_, i) => String(new Date().getFullYear() - 10 + i)).map(
+
                     (y) => (
                       <option key={y} value={y}>
                         {y}
