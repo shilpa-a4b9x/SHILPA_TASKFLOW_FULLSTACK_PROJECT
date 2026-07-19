@@ -223,6 +223,12 @@ export default function TaskModal({ isOpen, onClose, onSubmit, initialData }) {
       setError('Please fill in this field.');
       return;
     }
+
+    if (!form.dueDate) {
+  setError('Please select a due date (day, month and year).');
+  return;
+}
+
     if (form.dueDate && !/^\d{4}-\d{2}-\d{2}$/.test(form.dueDate)) {
       setError('Due date looks invalid. Please pick it again using the calendar.');
       return;
